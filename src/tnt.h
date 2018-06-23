@@ -489,6 +489,8 @@ struct staterr {
 #else
 #define _(str) str
 #endif
+#else
+#define _(str) str
 #endif
 
 #ifndef PACKAGE
