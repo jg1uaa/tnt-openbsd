@@ -90,6 +90,7 @@ int insertmode;
 int charconv;
 int xtermkeys;
 
+#define BC localBC /* BC is defined in /usr/include/termcap.h */
 /* Terminal capabilities */
 static char *AL, *DL, *IC, *DC, *WR;
 static char *CL, *CM, *CS, *IS, *BC;
