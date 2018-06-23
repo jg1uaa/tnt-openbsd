@@ -3445,7 +3445,7 @@ if test "${enable_nls+set}" = set; then
   enableval="$enable_nls"
   USE_NLS=$enableval
 else
-  USE_NLS=yes
+  USE_NLS=no
 fi
 
   echo "$ac_t""$USE_NLS" 1>&6
