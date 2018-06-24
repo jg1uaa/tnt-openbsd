@@ -524,7 +524,7 @@ static int boxline_analysis(char *str, struct boxline_result *boxline_ptr,
     boxline_ptr->mbx[6] = '\0';
     boxline_ptr->bytes = bytes;
     boxline_ptr->lt = lt;
-    strncpy(boxline_ptr->mbx,title,MAXCOLS);
+    strncpy(boxline_ptr->title,title,MAXCOLS);
     boxline_ptr->title[MAXCOLS] = '\0';
     boxline_ptr->start_col = 0;
     boxline_ptr->num_col = COLS - 1;
@@ -578,7 +578,7 @@ DG0XC  DIGI......17 28.04.95 2845DB0BALWE DL      1 DB0BRO-1 wieder ok.
     boxline_ptr->mbx[6] = '\0';
     boxline_ptr->bytes = bytes;
     boxline_ptr->lt = -1;
-    strncpy(boxline_ptr->mbx,title,MAXCOLS);
+    strncpy(boxline_ptr->title,title,MAXCOLS);
     boxline_ptr->title[MAXCOLS] = '\0';
     boxline_ptr->start_col = 0;
     boxline_ptr->num_col = COLS - 1;
@@ -612,7 +612,7 @@ DG0XC  DIGI......17 28.04.95 2845DB0BALWE DL      1 DB0BRO-1 wieder ok.
     boxline_ptr->mbx[0] = '\0';
     boxline_ptr->bytes = bytes;
     boxline_ptr->lt = -1;
-    strncpy(boxline_ptr->mbx,title,MAXCOLS);
+    strncpy(boxline_ptr->title,title,MAXCOLS);
     boxline_ptr->title[MAXCOLS] = '\0';
     boxline_ptr->start_col = 0;
     boxline_ptr->num_col = COLS - 1;
