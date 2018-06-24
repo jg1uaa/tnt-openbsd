@@ -1370,7 +1370,7 @@ int part;
     phy_par_scrup(real_info[part].first_real_line,line);
   else {  
     phy_gotoxy(0,line);
-    phy_newline(part);
+    phy_newline();
   }
   line = real_info[part].last_log_line;
   if ((phy_line = line + win->line_offset) >= win->num_lines)
@@ -1416,11 +1416,11 @@ struct window *win;
         else {
           if (real_info[win->real].last_log_line == (win->num_lines - 1)) {
             /* newline does the scroll */
-            phy_newline(win->real);
+            phy_newline();
           }
           else {
             /* scroll physical window 1 line up and update line */
-            win_scrollup(win->real);
+            win_scrollup();
           }
         }
       }
@@ -1436,7 +1436,7 @@ struct window *win;
          physical new line */
       if ((win->line > (real_info[win->real].first_log_line)) &&
           (win->line <= (real_info[win->real].last_log_line))) {
-        phy_newline(win->real);
+        phy_newline();
       }
       /* if newline first in physical window, cursor must be positioned */
       else if (win->line == (real_info[win->real].first_log_line)) {
@@ -1478,7 +1478,7 @@ int part;
     update_line(win,phy_line);
     /* newline not after last line or if auto_newline */
     if (!auto_newline) {
-      if (line != real_info[part].last_log_line) phy_newline(part);
+      if (line != real_info[part].last_log_line) phy_newline();
     }
     line++;
     if ((phy_line = line + win->line_offset) >= win->num_lines)
