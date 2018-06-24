@@ -1355,7 +1355,7 @@ int len;
   case '\r':
     switch (active_socket->login_stat) {
     case LS_SETUP:
-      abort_socksetup(active_socket);
+      abort_socksetup(active_socket,0);
       break;
     case LS_ACTCMD:
       sprintf(tmp, _("* Back to converse mode *\n"));
@@ -1369,7 +1369,7 @@ int len;
     break;
   default:
     if (active_socket->login_stat == LS_SETUP) {
-      abort_socksetup(active_socket);
+      abort_socksetup(active_socket,0);
     }
     else {
       error = 1;
