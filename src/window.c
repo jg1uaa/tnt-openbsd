@@ -1157,7 +1157,7 @@ void window_init()
   int i;
 
   termcaplist_root = NULL;
-  load_termcapfile(1);
+  load_termcapfile();
 
   att_normal = ATT_NORMAL;
   att_statline = ATT_STATLINE;
