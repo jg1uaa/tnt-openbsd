@@ -1699,13 +1699,13 @@ char *str;
 
   tnt_session = time(&tnt_session);
   session_time = tnt_session - tnt_startup;
-  sprintf(ans_str,_("<TNT>: Lifetime of this session: %ldd %ldh %ldm %lds%s"),
+  sprintf(ans_str,_("<TNT>: Lifetime of this session: %"PRId64"d %"PRId64"h %"PRId64"m %"PRId64"s%s"),
                   (session_time / 86400), ((session_time / 3600)%24),
                   ((session_time / 60)%60), (session_time % 60),
                   rem_newlin_str);
 
   session_time = (tnt_session - tnt_startup) + session_sek;
-  sprintf(tmp_str,_("       Lifetime of TNT:          %ldd %ldh %ldm %lds%s"),
+  sprintf(tmp_str,_("       Lifetime of TNT:          %"PRId64"d %"PRId64"h %"PRId64"m %"PRId64"s%s"),
                   (session_time / 86400), ((session_time / 3600)%24),
                   ((session_time / 60)%60), (session_time % 60),
                   rem_newlin_str);
@@ -1738,10 +1738,10 @@ char *str;
   hour = (diffsec / 3600) % 24;
   min  = (diffsec / 60)   % 60;
   diffsec %= 60;
-  if(days>0) sprintf(tmp_str,"%dd %dh %dm %lds",days,hour,min,diffsec);
-  else if(hour>0) sprintf(tmp_str,"%dh %dm %lds",hour,min,diffsec);
-  else if(min>0) sprintf(tmp_str,"%dm %lds",min,diffsec);
-  else sprintf(tmp_str, _("%ld seconds.") ,diffsec);
+  if(days>0) sprintf(tmp_str,"%dd %dh %dm %"PRId64"s",days,hour,min,diffsec);
+  else if(hour>0) sprintf(tmp_str,"%dh %dm %"PRId64"s",hour,min,diffsec);
+  else if(min>0) sprintf(tmp_str,"%dm %"PRId64"s",min,diffsec);
+  else sprintf(tmp_str, _("%"PRId64" seconds.") ,diffsec);
   ans_len = sprintf(ans_str,"%s%s%s",ans_str,tmp_str,rem_newlin_str);
   rem_data_display(channel,ans_str);
   queue_cmd_data(channel,X_DATA,ans_len,0,ans_str);
@@ -1826,8 +1826,8 @@ char *str;
   } else {
     t = time(&t);
     timep = localtime(&t);
-    sprintf(ans_str, "//ECHO //RTT Link time $%ld (%02d.%02d.%04d %02d:%02d:%02d)",
-            (unsigned int)t, timep->tm_mday, timep->tm_mon+1, timep->tm_year+1900,
+    sprintf(ans_str, "//ECHO //RTT Link time $%"PRId64" (%02d.%02d.%04d %02d:%02d:%02d)",
+            t, timep->tm_mday, timep->tm_mon+1, timep->tm_year+1900,
             timep->tm_hour, timep->tm_min, timep->tm_sec);
   }
   strcat(ans_str, rem_newlin_str);
@@ -3288,7 +3288,7 @@ void init_session()
   session_sek = 0;
 
   if((f1=fopen(tnt_session_log,"rb"))!=NULL) {
-    fscanf(f1,"%ld",&session_sek);
+    fscanf(f1,"%"SCNd64,&session_sek);
     fclose(f1);
   }
 }
@@ -3302,7 +3302,7 @@ void exit_session()
   session_sek = session_sek + (tnt_shutdown - tnt_startup);
 
   if((f1=fopen(tnt_session_log,"wb"))!=NULL) {
-    fprintf(f1,"%ld\n",session_sek); /* Gesamte Session speichern */
+    fprintf(f1,"%"PRId64"\n",session_sek); /* Gesamte Session speichern */
     fclose(f1);
   }
 }

@@ -136,7 +136,7 @@ int channel;
     strcat(logstr,ch_stat[channel].log_call);
     strcat(logstr,", Uplink: ");
   }
-  sprintf(qualstr,"%%.%us\n",LOG_LINELEN - strlen(logstr) - 2);
+  sprintf(qualstr,"%%.%zus\n",LOG_LINELEN - strlen(logstr) - 2);
   sprintf(tmpstr,qualstr,ch_stat[channel].call);
   strcat(logstr,tmpstr);
   /* logline available in logstr */

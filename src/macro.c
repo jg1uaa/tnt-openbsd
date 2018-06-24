@@ -103,9 +103,9 @@ int replace_macros(int in,int out,char *othercall,char *mycall,int channel,
 		diffmin = (time(NULL) - sysopactiv ) / 60;
 		hour = (diffmin / 60);
                 diffmin %= 60;
-		if(hour>0) sprintf(namestr,"%dh %ldm",hour,diffmin);
+		if(hour>0) sprintf(namestr,"%dh %"PRId64"m",hour,diffmin);
         else {
-		  sprintf(namestr,"%ld Minutes",diffmin);
+		  sprintf(namestr,"%"PRId64" Minutes",diffmin);
           if(diffmin!=1) strcat(namestr,"n"); }
 		putstring(namestr,out);
 		break;
@@ -114,7 +114,7 @@ int replace_macros(int in,int out,char *othercall,char *mycall,int channel,
           diffmin = ((time(NULL) - start_time ) / 60);
           hour = (diffmin / 60);
           diffmin %= 60;
-          sprintf(namestr,"%2.2u:%2.2lu",hour,diffmin);
+          sprintf(namestr,"%2.2u:%2.2"PRIu64,hour,diffmin);
           putstring(namestr,out);
           break;
 	case 'S':	/* Laufzeit dieser Version */
@@ -123,8 +123,8 @@ int replace_macros(int in,int out,char *othercall,char *mycall,int channel,
                 day = (diffmin / 1440);
                 hour = (diffmin / 60) % 60;
                 diffmin %= 60;
-		if(day>0) sprintf(namestr,"%dd %dh %ldm",day,hour,diffmin);
-		else sprintf(namestr,"%dh %ldm",hour,diffmin);
+		if(day>0) sprintf(namestr,"%dd %dh %"PRId64"m",day,hour,diffmin);
+		else sprintf(namestr,"%dh %"PRId64"m",hour,diffmin);
 		putstring(namestr,out);
 		break;
 	case 'M':	/* Message ausgeben */
