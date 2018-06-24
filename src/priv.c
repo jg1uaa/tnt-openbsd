@@ -984,7 +984,7 @@ int mode;
     fclose(fd);
     pw_stat[channel].pass_wait = 1;
     pw_stat[channel].tries = 30;
-/*  strcpy(tmpstr,"MD2"); /* Missing MD2, fixed on 10.04.98 by WS1LS */
+/*  strcpy(tmpstr,"MD2"); *//* Missing MD2, fixed on 10.04.98 by WS1LS */
     strcpy(tmpstr,pw_stat[channel].entry->priv_string); /* DG2GCC 03.01.2000 */
     strcat(tmpstr,rem_newlin_str);
     len = strlen(tmpstr);
