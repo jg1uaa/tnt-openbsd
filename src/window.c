@@ -1420,7 +1420,7 @@ struct window *win;
           }
           else {
             /* scroll physical window 1 line up and update line */
-            win_scrollup();
+            win_scrollup(win->real);
           }
         }
       }
